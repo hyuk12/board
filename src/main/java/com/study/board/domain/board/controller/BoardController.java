@@ -20,12 +20,12 @@ public class BoardController {
     // 게시판 생성
     @PostMapping
     public ResponseEntity<?> createBoard(@RequestBody CreateBoardReqDto req, HttpSession session) {
-        User user = (User) session.getAttribute("user");
-
-        if (user == null) {
-            return ResponseEntity.status(401).body("로그인 해주세요");
-        }
-        createBoardService.createBoard(req, user);
+//        User user = (User) session.getAttribute("user");
+//
+//        if (user == null) {
+//            return ResponseEntity.status(401).body("로그인 해주세요");
+//        }
+        createBoardService.createBoard(req);
         return ResponseEntity.status(HttpStatus.CREATED).body("게시판 생성이 완료되었습니다.");
     }
 

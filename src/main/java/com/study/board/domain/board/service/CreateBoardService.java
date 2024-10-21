@@ -1,6 +1,7 @@
 package com.study.board.domain.board.service;
 
 import com.study.board.domain.board.dto.req.CreateBoardReqDto;
+import com.study.board.domain.board.entity.repository.BoardRepository;
 import com.study.board.domain.user.entity.User;
 import com.study.board.global.mapper.board.BoardMapper;
 import com.study.board.global.mapper.user.UserMapper;
@@ -13,11 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class CreateBoardService {
-    private final BoardMapper boardMapper;
-    private final UserMapper userMapper;
+//    private final BoardMapper boardMapper;
+//    private final UserMapper userMapper;
+    private final BoardRepository boardRepository;
 
     // 게시판 등록
-    public void createBoard(CreateBoardReqDto req, User user) {
-        boardMapper.createBoard(req.of(user.getId()));
+    public void createBoard(CreateBoardReqDto req) {
+        boardRepository.save(req.of());
+//        boardMapper.createBoard(req.of(user.getId()));
     }
 }

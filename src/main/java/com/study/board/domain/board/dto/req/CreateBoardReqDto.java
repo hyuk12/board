@@ -9,13 +9,10 @@ public record CreateBoardReqDto(
         String title,
         String content
 ) {
-    public Board of(Long userId) {
+    public Board of() {
         return Board.builder()
                 .title(this.title)
                 .content(this.content)
-                .userId(userId)
-                .createdDate(LocalDateTime.now())
-                .updatedDate(LocalDateTime.now())
                 .build();
     }
 }

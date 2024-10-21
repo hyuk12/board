@@ -16,8 +16,6 @@ public record CreateUserReqDto(
                 .password(password)
                 .email(email)
                 .name(name)
-                .createdDate(LocalDateTime.now())
-                .updatedDate(LocalDateTime.now())
                 .build();
     }
 }
