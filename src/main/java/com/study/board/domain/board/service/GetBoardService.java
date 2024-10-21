@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional(readOnly = true)
 @Service
 @RequiredArgsConstructor
@@ -22,5 +24,11 @@ public class GetBoardService {
         User byUserId = userMapper.findByUserId(userId);
 
         return boardMapper.getBoard(id).of(byUserId.getName());
+    }
+
+    public List<GetBoardRespDto> getBoardList() {
+        return boardMapper.getBoardList().stream()
+                .map(Board -> Board.of(userMapper.findByUserId(Board.getUserId()).getName()))
+                .toList();
     }
 }

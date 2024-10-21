@@ -21,4 +21,39 @@
         WHERE id = #{id}
     </select>
 
+    <select id="getBoardList" resultType="com.study.board.domain.board.entity.Board">
+        select
+            id AS id,
+            title AS title,
+            content AS content,
+            user_id AS userId,
+            created_date AS createdDate,
+            updated_date AS updatedDate
+        from board
+    </select>
+
+    <delete id="deleteBoard">
+        delete from board where id = #{id}
+    </delete>
+
+    <select id="getBoardUserId" resultType="long">
+        select user_id As userId from board where id = #{id}
+    </select>
+
+    <update id="updateBoard">
+        update board
+        set title = #{title}, content = #{content}, updated_date = #{updatedDate}
+        where id = #{id}
+    </update>
+
+    <select id="getTotalPosts" resultType="Integer">
+        select count(*) from board
+    </select>
+
+    <select id="getBoardPageList" resultType="com.study.board.domain.board.entity.Board">
+        select * from board
+        order by id desc
+        limit #{pageSize} offset #{offset}
+    </select>
+
 </mapper>
