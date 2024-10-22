@@ -36,4 +36,10 @@ public class BoardController {
         return ResponseEntity.ok().body(getBoardService.getBoard(id));
     }
 
+    // page list
+    @GetMapping
+    public ResponseEntity<?> getBoarList(@RequestParam(defaultValue = "0") int pageNo, @RequestParam(defaultValue = "10") int pageSize) {
+        return ResponseEntity.ok(getBoardService.getBoardListPageNation(pageNo, pageSize).getContent());
+    }
+
 }

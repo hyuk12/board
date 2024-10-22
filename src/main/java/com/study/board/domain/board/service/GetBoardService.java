@@ -7,9 +7,14 @@ import com.study.board.domain.user.entity.User;
 import com.study.board.global.mapper.board.BoardMapper;
 import com.study.board.global.mapper.user.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Transactional(readOnly = true)
@@ -29,5 +34,14 @@ public class GetBoardService {
             throw new IllegalArgumentException("데이터가 없습니다");
         }
         return byId.of("author");
+    }
+
+    public Page<?> getBoardListPageNation(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return boardRepository.findAllByOrderByCreatedDateDesc(pageable).map(GetBoardRespDto::from);
+    }
+
+    public List<Board> getBoardListSorted() {
+        return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "title"));
     }
 }
