@@ -28,8 +28,7 @@ public class User extends BaseTimeEntity {
     private String password;
     private String email;
     private String name;
+    private int age;
 
-    @OneToMany()
-    private List<Board> boardList = new ArrayList<>();
 
 }
