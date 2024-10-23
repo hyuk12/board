@@ -1,6 +1,7 @@
-package com.study.board.domain.entity;
+package com.study.board.domain.board.entity;
 
-import com.study.board.domain.dto.resp.GetBoardRespDto;
+import com.study.board.domain.board.dto.resp.GetBoardRespDto;
+import com.study.board.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,16 +14,16 @@ public class Board {
     private Long id;
     private String title;
     private String content;
-    private String author;
+    private Long userId;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    public GetBoardRespDto of() {
+    public GetBoardRespDto of(String name) {
         return GetBoardRespDto.builder()
                 .title(this.title)
                 .content(this.content)
-                .author(this.author)
+                .author(name)
                 .build();
     }
 }

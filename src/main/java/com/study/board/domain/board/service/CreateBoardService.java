@@ -1,7 +1,9 @@
-package com.study.board.domain.service;
+package com.study.board.domain.board.service;
 
-import com.study.board.domain.dto.req.CreateBoardReqDto;
-import com.study.board.global.mapper.BoardMapper;
+import com.study.board.domain.board.dto.req.CreateBoardReqDto;
+import com.study.board.domain.user.entity.User;
+import com.study.board.global.mapper.board.BoardMapper;
+import com.study.board.global.mapper.user.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,9 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class CreateBoardService {
     private final BoardMapper boardMapper;
+    private final UserMapper userMapper;
 
     // 게시판 등록
-    public void createBoard(CreateBoardReqDto req) {
-        boardMapper.createBoard(req.of());
+    public void createBoard( User user,CreateBoardReqDto req) {
+        boardMapper.createBoard(req.of(user.getId()));
     }
 }
