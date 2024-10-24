@@ -19,8 +19,8 @@ public class CreateBoardService {
     private final BoardRepository boardRepository;
 
     // 게시판 등록
-    public void createBoard(CreateBoardReqDto req) {
-        boardRepository.save(req.of());
+    public void createBoard(CreateBoardReqDto req, User user) {
+        boardRepository.save(req.of(user));
 //        boardMapper.createBoard(req.of(user.getId()));
     }
 }

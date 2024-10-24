@@ -31,15 +31,15 @@ public class Board extends BaseTimeEntity {
     private String content;
 
     // 연관 관계 매핑 유저아이디 기준으로 조인을해서 가져온다 다 대 1
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    public GetBoardRespDto of(String name) {
+    public GetBoardRespDto of() {
         return GetBoardRespDto.builder()
                 .title(this.title)
                 .content(this.content)
-                .author(name)
+                .author(user.getName())
                 .build();
     }
 }

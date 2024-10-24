@@ -30,5 +30,6 @@ public class User extends BaseTimeEntity {
     private String name;
     private int age;
 
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Board> boards;
 }

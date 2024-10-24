@@ -33,7 +33,7 @@ public class GetBoardService {
         if (byId == null) {
             throw new IllegalArgumentException("데이터가 없습니다");
         }
-        return byId.of("author");
+        return byId.of();
     }
 
     public Page<?> getBoardListPageNation(int pageNo, int pageSize) {
@@ -44,4 +44,12 @@ public class GetBoardService {
     public List<Board> getBoardListSorted() {
         return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "title"));
     }
+
+    public Board findBoardWithUser(Long id) {
+        return boardRepository.findBoardWithUser(id);
+    }
+
+//    public List<Board> findAllWithUser() {
+//        return boardRepository.findAllWithUser();
+//    }
 }

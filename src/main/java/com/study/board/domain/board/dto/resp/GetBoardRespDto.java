@@ -13,7 +13,7 @@ public record GetBoardRespDto(
         return GetBoardRespDto.builder()
                 .title(board.getTitle())
                 .content(board.getContent())
-                .author("test")
+                .author(board.getUser().getName())
                 .build();
     }
 }
