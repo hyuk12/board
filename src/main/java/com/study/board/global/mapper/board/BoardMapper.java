@@ -1,6 +1,6 @@
-package com.study.board.global.mapper;
+package com.study.board.global.mapper.board;
 
-import com.study.board.domain.entity.Board;
+import com.study.board.domain.board.entity.Board;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

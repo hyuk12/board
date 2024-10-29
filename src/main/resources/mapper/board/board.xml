@@ -2,19 +2,19 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.study.board.global.mapper.BoardMapper">
+<mapper namespace="com.study.board.global.mapper.board.BoardMapper">
 
     <insert id="createBoard">
-        INSERT INTO board (title, content, author, created_date, updated_date)
-        VALUES (#{title}, #{content}, #{author}, #{createdDate}, #{updatedDate})
+        INSERT INTO board (title, content, user_id, created_date, updated_date)
+        VALUES (#{title}, #{content}, #{userId}, #{createdDate}, #{updatedDate})
     </insert>
 
-    <select id="getBoard" resultType="com.study.board.domain.entity.Board">
+    <select id="getBoard" resultType="com.study.board.domain.board.entity.Board">
         SELECT
             id AS id,
             title AS title,
             content AS content,
-            author AS author,
+            user_id AS userId,
             created_date AS createdDate,
             updated_date AS updatedDate
         FROM board
